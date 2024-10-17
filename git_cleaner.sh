@@ -9,6 +9,9 @@ mv bfg-1.13.0.jar bfg.jar
 # Scan all files that are over 10MB and remove it
 java -jar bfg.jar --strip-blobs-bigger-than 10M .git
 
+# Remove csv, zip, xlsx, etc
+java -jar bfg.jar --delete-files '{*.zip,*.xlsx}' .git
+
 # Clean git
 git reflog expire --expire=now --all && git gc --prune=now --aggressive
 
